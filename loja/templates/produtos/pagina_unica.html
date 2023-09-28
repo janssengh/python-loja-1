@@ -1,0 +1,67 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+{% include 'navbar.html' %}
+
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{url_for('static', filename='images/' + produto.image_1)}}" id="m_image" alt="{{produto.name}}"  height="400" weight="400">
+        </div>
+        <div class="col-md-6">
+            <h4>Nome Produto :{{produto.name}}</h4>
+            <br>
+            <p>Preço R$ {{produto.price}}</p>
+            {% if produto.discount > 0 %}
+            <b>Desconto: {{produto.discount}} %</b>
+            {% endif %}
+            <hr>
+            
+            <b>Descrição</b>
+            <p>{{produto.discription}}</p>
+            <hr>
+            <b>Marca: </b>{{produto.nmbrand}} |<b> Categoria:</b> {{produto.nmcategory}} |<b> Cor: </b>{{produto.nmcolor}}
+            <hr>
+            <form action="{{url_for('addCart')}}" method="POST">
+                <input type="hidden" name="produto_id" value="{{produto.id}}">
+                <button class="btn btn-sm btn-warning">Adicionar Carrinho</button>
+                <label for="">Quantidade :</label>
+                <input type="number" name="quantity" id="" value=1 min="1" max="{{produto.stock}}">
+                {% set sizes = produto.nmsize.split(',') %}
+                <label for="sizes">Tamanho(s) :</label>
+                <select name="sizes" id="sizes">
+                    {% for size in sizes %}
+                    {% set siz = size.split(':') %}
+                    <option value="{{siz[0]}}">{{siz[0]}}</option>
+                    {% endfor %}
+                </select>
+            </form>
+           
+          
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-3" id="s_image">
+            <hr>
+            <img src="{{url_for('static', filename='images/' + produto.image_1)}}" alt="{{produto.name}}"  width="150" height="150" class="p-3" onclick="img01();">
+            <img src="{{url_for('static', filename='images/' + produto.image_2)}}" alt="{{produto.name}}"  width="150" height="150" class="p-3" onclick="img02();">
+            <img src="{{url_for('static', filename='images/' + produto.image_3)}}" alt="{{produto.name}}"  width="150" height="150" class="p-3" onclick="img03();">
+        </div>
+    </div>
+</div>
+
+<script>
+        function img01() {
+            document.getElementById("m_image").src="{{url_for('static', filename='images/' + produto.image_1)}}";
+        }
+        function img02() {
+            document.getElementById("m_image").src="{{url_for('static', filename='images/' + produto.image_2)}}";
+        }
+        function img03() {
+            document.getElementById("m_image").src="{{url_for('static', filename='images/' + produto.image_3)}}";
+        }
+</script>
+
+{% endblock conteudo %}

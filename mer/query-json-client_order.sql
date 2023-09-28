@@ -1,0 +1,1 @@
+select ID, json_value('order') from client_order 

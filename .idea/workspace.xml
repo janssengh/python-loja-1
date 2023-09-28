@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4616a75f-ce6f-4db9-8c50-aa7cb42678df" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/admin/formulario.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/admin/formulario.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/admin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/admin/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/admin/rotas.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/admin/rotas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/carrinho/carrinhos.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/carrinho/carrinhos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/carrinho/carrinhos.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/clientes/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/clientes/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/clientes/rotas.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/clientes/rotas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/produtos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/produtos/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/produtos/rotas.py" beforeDir="false" afterPath="$PROJECT_DIR$/loja/produtos/rotas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/admin/cor.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/admin/cor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/admin/marca.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/admin/marca.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/cliente/conta.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/cliente/conta.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/cliente/obrigado.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/cliente/obrigado.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/cliente/pdf.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/cliente/pdf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/cliente/pedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/cliente/pedido.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/layouts.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/layouts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/navbar-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/navbar-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/navbar-search.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/navbar-search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/pgordschall.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/pgordschall.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/produtos/addproduto.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/produtos/addproduto.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/produtos/carros.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/produtos/carros.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/produtos/carros.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loja/templates/produtos/updateproduto.html" beforeDir="false" afterPath="$PROJECT_DIR$/loja/templates/produtos/updateproduto.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NKP1nYnBeGYAN9YZ4uy8J6Zkbt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Roeland/Principal/Marketing digital/Softgraf/Python2023/projetos/minha_loja/loja/templates/cliente&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\templates\cliente" />
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\templates" />
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\templates\produtos" />
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\templates\admin" />
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\carrinho" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\templates\admin" />
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\templates" />
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\templates\cliente" />
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\produtos" />
+      <recent name="C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos\minha_loja\loja\templates\produtos" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4616a75f-ce6f-4db9-8c50-aa7cb42678df" name="Changes" comment="" />
+      <created>1679409587824</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679409587824</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/loja/clientes/forms.py</url>
+          <line>115</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/loja/carrinho/carrinhos.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/loja/clientes/rotas.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

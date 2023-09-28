@@ -1,0 +1,38 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {% include "_messages.html" %}
+        <h2 class="text-center mt-5"> Cadastrar Embalagens </h2>
+        <form action="" method="POST">
+            <div class="form-control">
+                <label for="format">Adicionar um Formato</label>
+                <select name="format" id="format" class="form-select" required>
+                    <option value="format">Selecione um Formato</option>
+                    <option value="1">Caixa/Pacote</option>
+                    <option value="2">Rolo/Prisma</option>
+                    <option value="3">Envelope</option>
+                </select>
+
+                <label>Peso</label>
+                <input type="text" name="weight" class="form-control">
+                <label>Comprimento</label>
+                <input type="text" name="length" class="form-control">
+                <label>Altura</label>
+                <input type="text" name="height" class="form-control">
+                <label>Largura</label>
+                <input type="text" name="width" class="form-control">
+            </div>
+            <input type="submit" value="Cadastrar" class="btn btn-success mt-2">
+        </form>
+        <a class="btn btn-danger" style="margin-top: -68px; margin-left: 180px;" href="{{url_for('admin')}}">Cancelar</a>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+{% endblock conteudo %}

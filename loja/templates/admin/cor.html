@@ -1,0 +1,102 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+{% include "navbar-adm.html" %}
+
+<div class="container mt-3">
+  <table class="table table table-sm table-striped">
+    <thead>
+      <th>Serial</th>
+      <th>Nome</th>
+
+      <th>Editar</th>
+      <th>Deletar</th>
+    </thead>
+
+    <tbody>
+      {% if cores %}
+      {% for cor in cores %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{cor.name}}</td>
+
+        <td><a href="{{url_for('updatecor', id=cor.id)}}" class="btn btn-sm btn-warning">Editar</a></td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+            data-bs-target="#exampleModal-{{cor.id}}">
+            Excluir
+          </button>
+        </td>
+      </tr>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal-{{cor.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="corModalLabel">{{cor.name}}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <span class="text-danger">Deseja realmente excluir esta cor {{cor.name}}?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</button>
+              <form action="{{url_for('deletecor', id=cor.id)}}" method="POST">
+                <button type="submit" class="btn btn-danger">Excluir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+      {% else %}
+      {% for tamanho in tamanhos %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{tamanho.name}}</td>
+
+        <td><a href="{{url_for('updatetamanho', id=tamanho.id)}}" class="btn btn-sm btn-warning">Editar</a></td>
+
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+            data-bs-target="#exampleModal-{{tamanho.id}}">
+            Excluir
+          </button>
+        </td>
+      </tr>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal-{{tamanho.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="tamanhoModalLabel">{{tamanho.name}}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <span class="text-danger">Deseja realmente excluir este tamanho {{tamanho.name}}?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</button>
+              <form action="{{url_for('deletetamanho', id=tamanho.id)}}" method="POST">
+                <button type="submit" class="btn btn-danger">Excluir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+      {% endif %}
+    </tbody>
+
+  </table>
+
+</div>
+
+{% include '_messages.html' %}
+
+{% endblock conteudo %}

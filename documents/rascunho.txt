@@ -1,0 +1,14 @@
+ <a class="navbar-brand" href="/">
+            <img src="https://king-assets.yampi.me/dooki/64a70437e0f0a/64a70437e0f0e.png" alt="Lolita Store" width="auto" height="auto">
+ </a>
+
+from flask_sqlalchemy_session import current_session
+
+@app.route("/users/<int:user_id>")
+def user(user_id):
+    user = current_session.query(User).get(user_id)
+    if user is None:
+        abort(404)
+    return flask.jsonify(**user.to_dict())
+
+https://flask--sqlalchemy--session-readthedocs-io.translate.goog/en/v1.1/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=sc

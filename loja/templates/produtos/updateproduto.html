@@ -1,0 +1,82 @@
+{% extends 'layouts.html' %}
+
+{% block conteudo %}
+
+{% include '_messages.html' %}
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 p-2">
+        <h2 class="text-center p-2">Atualizar Produtos </h2>
+
+        {% from '_ajudaformulario.html' import render_field %}
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            {{ render_field(form.name, class="form-control", placeholder="Nome do Produto") }}
+            {{ render_field(form.price, class="form-control", placeholder="Preço do Produto") }}
+            {{ render_field(form.discount, class="form-control", placeholder="Desconto do Produto") }}
+            {{ render_field(form.stock, class="form-control", placeholder="Estoque do Produto") }}
+
+            <label for="marca">Adicionar uma Marca</label>
+            <select name="marca" id="marca" class="form-select" required>
+                <option value="{{produto.marca.id}}">{{produto.marca.name}}</option>
+                {% for brand in marcas  %}
+                <option value={{brand.id}}>{{brand.name}}</option>
+                {% endfor  %}
+            </select>
+
+            <label for="categoria">Adicionar uma Categoria</label>
+            <select name="categoria" id="categoria" class="form-select" required>
+                <option value="{{produto.categoria.id}}">{{produto.categoria.name}}</option>
+                {% for category in categorias  %}
+                <option value={{category.id}}>{{category.name}}</option>
+                {% endfor  %}
+            </select>
+
+            <label for="cor">Adicionar uma Cor</label>
+            <select name="cor" id="cor" class="form-select" required>
+                <option value="{{produto.cor.id}}">{{produto.cor.name}}</option>
+                {% for color in cores  %}
+                <option value={{color.id}}>{{color.name}}</option>
+                {% endfor  %}
+            </select>
+
+            <label for="tamanho">Adicionar um Tamanho</label>
+            <select name="tamanho" id="tamanho" class="form-select" required>
+                <option value="{{produto.tamanho.id}}">{{produto.tamanho.name}}</option>
+                {% for size in tamanhos  %}
+                <option value={{size.id}}>{{size.name}}</option>
+                {% endfor  %}
+            </select>
+
+            <label for="embalagem">Adicionar uma Embalagem</label>
+            <select name="embalagem" id="embalagem" class="form-select" required>
+                <option value="{{produto.embalagem.id}}">{{dimension}}</option>
+                {% for embalagem in embalagens  %}
+                <option value="{{embalagem.id}}">{{embalagem.dimension}}</option>
+                {% endfor  %}
+            </select>
+
+            {{ render_field(form.discription, class="form-control", placeholder="Descrição do Produto", rows="10") }}
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">{{ render_field(form.image_1, class="form-control")}}</div>
+                    <div class="col-md-4">{{ render_field(form.image_2, class="form-control")}}</div>
+                    <div class="col-md-4">{{ render_field(form.image_3, class="form-control")}}</div>
+                </div>
+                <button type="submit" class="btn btn-success mt-4">Atualizar Produto</button>
+                <a class="btn btn-danger mt-4" style="margin-top: -40px; margin-left: 450px;" href="{{url_for('admin')}}">Cancelar</a>
+            </div>
+
+        </form>
+
+    </div>
+    <div class="col-md-2"></div>
+
+
+</div>
+</div>
+
+{% endblock conteudo %}

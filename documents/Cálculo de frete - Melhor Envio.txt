@@ -1,0 +1,40 @@
+Cálculo de frete - Melhor Envio
+senha: 276718@me1863
+https://docs.melhorenvio.com.br/docs/manual
+
+Aviso aos lojistas: antes de iniciar o processo de ativação da integração, é necessário realizar um cadastro na plataforma do Melhor Envio
+Modalidades de Integração:
+	Somente cálculo de frete;
+	Cálculo de frete + inserção de etiqueta no carrinho do Melhor Envio;
+	Cálculo + compra de etiquetas;
+	Cálculo + compra de etiquetas + impressão;
+	Rastreio de pedidos.
+Autenticação do aplicativo:
+	Preenchimento dos dados que serão utilizados como remetente;
+	Selecionar serviços das transportadoras;
+	Adicionar prazo extra;
+	Adicionar valor adicional;
+	Selecionar serviços adicionais (Mão Própria, Aviso de Recebimento e coleta).
+Estrutura básica:
+	Trajetória do usuário - Mostrar o passo a passo de cada sessão que o usuário irá acessar. Do login até a conclusão da integração.
+
+	Instruções visuais - Utilização de prints para ilustrar a trajetória do usuário. Quanto mais referências visuais, melhor.
+
+	Orientação de ações - Verbos como “acessar”, “clicar”, “ir” são úteis para nortear o formato do manual de integração como um texto que direciona o usuário.
+
+	Etapas - Enumerar o passo a passo dividindo-o por número de etapas pode simplificar a distribuição de ações.
+
+	Exemplo simples:
+
+	Acesse o site do Melhor Envio e realize o login.
+	Vá até o menu lateral da esquerda e clique na aba “Integrações”.
+	Procure pelo subtítulo “Plataformas de e-commerce”.
+	Clique no botão “Manual” na plataforma que você deseja acessar o manual de integração para mais informações.
+
+Ambiente para testes:
+https://sandbox.melhorenvio.com.br/
+Link para acessar o API
+https://docs.melhorenvio.com.br/?_gl=1*1pklw94*_ga*MTQwODgyNTExMC4xNjkwNDY4Mjk5*_ga_Q4BEY36MXG*MTY5MDQ3NTgwOC4yLjEuMTY5MDQ3NjI2OS42MC4wLjA.
+
+PAGSEGURO
+Senha: 276818ps

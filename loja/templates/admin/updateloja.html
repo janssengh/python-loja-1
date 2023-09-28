@@ -1,0 +1,27 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {% include "_messages.html" %}
+        <h2 class="text-center mt-5"> Cadastrar Loja </h2>
+        <form action="" method="POST">
+          <label>Nome da Loja</label>
+          <input type="text" name="name" class="form-control" value="{{updateloja.name}}">
+          <label>Taxa Base Frete (%)</label>
+          <input type="text" name="freight" class="form-control" value="{{updateloja.freight_rate}}">
+          <label>Qt.produtos por página</label>
+          <input type="text" name="pages" class="form-control" value="{{updateloja.pages}}">
+          <input type="submit" value="Atualizar Loja" class="btn btn-success mt-2">
+        </form>
+        <a class="btn btn-danger" style="margin-top: -68px; margin-left: 180px;" href="{{url_for('loja')}}">Cancelar</a>
+
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+{% endblock conteudo %}

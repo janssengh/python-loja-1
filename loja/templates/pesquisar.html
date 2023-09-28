@@ -1,0 +1,50 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+{% include 'navbar.html' %}
+
+{% include 'navbar-search.html' %}
+{% include 'navbar-page.html' %}
+
+
+<div class="container">
+    <div class="row">
+
+        {% for produto in produtos %}
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{{url_for('static', filename='images/' + produto.image_1)}}" alt="{{produto.name}}" class="card-img-top" height="300">
+                <div class="card-body">
+                    {% if produto.discount > 0 %}
+                    <h5 style="text-shadow: 1px 1px 2px #000; color: #f00; transform: rotate(-2deg); position: absolute; top: 50%; left: 25%; font-weight: 600;">
+                        Desconto {{produto.discount}} %
+                    </h5>
+                    {% endif %}
+                    <h4 class="text-center">{{produto.name}}</h4>
+                    <p class="text-center">Preço R$ {{produto.price}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{url_for('pagina_unica', id=produto.id)}}" class="float-sm-start btn btn-sm btn-success" >Detalhes</a>
+
+                    <form action="{{url_for('addCart')}}" method="POST">
+                        <input type="hidden" name="produto_id" value="{{produto.id}}">
+                        <button class="btn btn-sm btn-warning float-end">Adicionar Carrinho</button>
+
+                        <input type="hidden" name="quantity" id="" value=1 min="1", max="{{produto.quantity}}">
+                        {% set sizes = produto.nmsize.split(',') %}
+
+                        <select name="sizes" style="visibility: hidden;">
+                                {% for size in sizes %}
+                                {% set siz = size.split(':') %}
+                                <option value="{{siz[0]}}">{{siz[0]|capitalize}}</option>
+                                {% endfor %}
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock conteudo %}

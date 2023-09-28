@@ -1,0 +1,5 @@
+
+LOJA:
+1. Implementar logotipo, informações da loja, segurança, visual
+2. Trazer toda a documentação do Python/Javascript e salvar em documents
+3. Incluir whatsapp

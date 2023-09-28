@@ -1,0 +1,129 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+{% include 'navbar.html' %}
+
+{% include 'navbar-search.html' %}
+{% include 'navbar-page.html' %}
+
+
+    <div class="container">
+        <div class="row">
+        {% if marca %}
+
+            {% for m in marca.items %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{url_for('static', filename='images/' + m.image_1)}}" alt="{{m.name}}" class="card-img-top" height="300">
+                    <div class="card-body">
+                        {% if m.discount > 0 %}
+                        <h5 style="text-shadow: 1px 1px 2px #000; color: #f00; transform: rotate(-2deg); position: absolute; top: 50%; left: 25%; font-weight: 600;">
+                            Desconto {{m.discount}} %
+                        </h5>
+                        {% endif %}
+                        <h4 class="text-center">{{m.brand_id}}{{m.name}}</h4>
+                        <p class="text-center">Preço R$ {{m.price}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{url_for('pagina_unica', id=m.id)}}" class="float-sm-start btn btn-sm btn-success" >Detalhes</a>
+                        <form action="{{url_for('addCart')}}" method="POST">
+                            <input type="hidden" name="produto_id" value="{{m.id}}">
+                            <button class="btn btn-sm btn-warning float-end">Adicionar Carrinho</button>
+
+                            <input type="hidden" name="quantity" id="mar" value=1>
+                             {% set sizes = m.nmsize.split(',') %}
+
+                            <select name="sizes" style="visibility: hidden;">
+                                {% for size in sizes %}
+                                {% set siz = size.split(':') %}
+                                <option value="{{siz[0]}}">{{siz[0]|capitalize}}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row"></div>
+        {% elif get_cat_prod %}
+        {% for get_cat in get_cat_prod.items %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{url_for('static', filename='images/' + get_cat.image_1)}}" alt="{{get_cat.name}}" class="card-img-top" height="300">
+                    <div class="card-body">
+                        {% if get_cat.discount > 0 %}
+                        <h5 style="text-shadow: 1px 1px 2px #000; color: #f00; transform: rotate(-2deg); position: absolute; top: 50%; left: 25%; font-weight: 600;">
+                            Desconto {{get_cat.discount}} %
+                        </h5>
+                        {% endif %}
+                        <h4 class="text-center">{{get_cat.name}}</h4>
+                        <p class="text-center">Preço R$ {{get_cat.price}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{url_for('pagina_unica', id=get_cat.id)}}" class="float-sm-start btn btn-sm btn-success" >Detalhes</a>
+
+                        <form action="{{url_for('addCart')}}" method="POST">
+                            <input type="hidden" name="produto_id" value="{{get_cat.id}}">
+                            <button class="btn btn-sm btn-warning float-end">Adicionar Carrinho</button>
+
+                            <input type="hidden" name="quantity" id="cat" value=1>
+                            {% set sizes = get_cat.nmsize.split(',') %}
+
+                            <select name="sizes" style="visibility: hidden;">
+                                {% for size in sizes %}
+                                {% set siz = size.split(':') %}
+                                <option value="{{siz[0]}}">{{siz[0]|capitalize}}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            {% else %}
+
+            {% for produto in produtos.items %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{url_for('static', filename='images/' + produto.image_1)}}" alt="{{produto.name}}" class="card-img-top" height="300">
+                    <div class="card-body">
+                        {% if produto.discount > 0 %}
+                        <h5 style="text-shadow: 1px 1px 2px #000; color: #f00; transform: rotate(-2deg); position: absolute; top: 50%; left: 25%; font-weight: 600;">
+                            Desconto {{produto.discount}} %
+                        </h5>
+                        {% endif %}
+                        <h4 class="text-center">{{produto.name}}</h4>
+                        <p class="text-center">Preço R$ {{produto.price}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{url_for('pagina_unica', id=produto.id)}}" class="float-sm-start btn btn-sm btn-success" >Detalhes</a>
+
+                        <form action="{{url_for('addCart')}}" method="POST">
+                            <input type="hidden" name="produto_id" value="{{produto.id}}">
+                            <button class="btn btn-sm btn-warning float-end">Adicionar Carrinho</button>
+
+                            <input type="hidden" name="quantity" id="" value=1 min="1", max="{{produto.quantity}}">
+                            {% set sizes = produto.nmsize.split(',') %}
+
+                            <select name="sizes" style="visibility: hidden;">
+                                {% for size in sizes %}
+                                {% set siz = size.split(':') %}
+                                <option value="{{siz[0]}}">{{siz[0]|capitalize}}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% endif %}
+    </div>
+{% endblock conteudo %}

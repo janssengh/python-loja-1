@@ -1,0 +1,22 @@
+       {% if get_cat_prod.has_prev %}
+            <a href="{{url_for('get_categoria', id=category_id, pagina=get_cat_prod.prev_num)}}" class="btn btn-outline-success btn-sm mt-3">Anterior</a>
+        {% endif %}
+
+        {% if get_cat_prod.total > pages %}
+            {% for page_num in get_cat_prod.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %}
+                {% if page_num %}
+
+                    {% if get_cat_prod.pagina == page_num %}
+                        <a href="{{url_for('get_categoria', id=category_id,  pagina=page_num)}}" class="btn btn-success btn-sm mt-3">{{page_num}}</a>
+                    {% else %}
+                        <a href="{{url_for('get_categoria', id=category_id, pagina=page_num)}}" class="btn btn-outline-success btn-sm mt-3">{{page_num}}</a>
+                    {% endif %}
+                {% else %}
+                    ...
+                {% endif %}
+
+            {% endfor %}
+        {% endif %}
+        {% if get_cat_prod.has_next %}
+            <a href="{{url_for('get_categoria', id=category_id, pagina=get_cat_prod.next_num)}}" class="btn btn-outline-success btn-sm mt-3">Próxima</a>
+        {% endif %}

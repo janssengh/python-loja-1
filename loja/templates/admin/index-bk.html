@@ -1,0 +1,140 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{url_for('admin')}}">{{titulo}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('admin')}}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Loja
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{url_for('addloja')}}">Incluir Loja</a></li>
+                <li><a class="dropdown-item" href="{{url_for('loja')}}">Consultar Loja</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('loja')}}">Loja</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('marcas')}}">Marcas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('categoria')}}">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('cores')}}">Cores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('tamanhos')}}">Tamanhos</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Produtos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{url_for('addproduto')}}">Incluir Produtos</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addmarca')}}">Incluir Marcas</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addcat')}}">Incluir Categorias</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addcor')}}">Incluir Cores</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addtamanho')}}">Incluir Tamanhos</a></li>
+                <!--<li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+              </ul>
+            </li>
+            <!--<li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>-->
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+<div class="container mt-3">
+  {% include '_messages.html' %}
+  <table class="table table table-sm table-striped">
+    <thead>
+      <th>Id</th>
+      <th>Produto</th>
+      <th>Preço</th>
+      <th>Desconto</th>
+      <th>Fabricante</th>
+      <th>Foto</th>
+      <th>Editar</th>
+      <th>Deletar</th>
+    </thead>
+    <tbody>
+      {% for produto in produtos %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{produto.name}}</td>
+        <td>{{produto.price}}</td>
+        <td>{{produto.discount}} %</td>
+        <td>{{produto.marca.name}}</td>
+        <td><img src="{{url_for('static',filename='images/' + produto.image_1)}}" width="50" height="40"></td>
+        <td><a href="{{url_for('updateproduto', id=produto.id)}}" class="btn btn-success btn-sm">Editar</a></td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+            data-bs-target="#exampleModal-{{produto.id}}">
+            Excluir
+          </button>
+        </td>
+
+
+      </tr>
+
+
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal-{{produto.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">{{produto.name}}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <span class="text-danger">Deseja realmente excluir esta categoria {{produto.name}}?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal">Cancelar</button>
+              <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+              <form action="{{url_for('deleteproduto', id=produto.id)}}" method="POST">
+                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      {% endfor %}
+    </tbody>
+
+  </table>
+
+</div>
+
+
+
+{% endblock conteudo %}

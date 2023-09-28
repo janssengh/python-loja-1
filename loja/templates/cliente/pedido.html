@@ -1,0 +1,102 @@
+{% extends 'layouts.html' %}
+
+{% block conteudo %}
+
+{% include 'navbar.html' %}
+
+<div class="container mt-4">
+    {% include '_messages.html' %}
+    <div class="row">
+        <div class="col-md-12">
+            Número do Pedido: {{pedidos.invoice}}
+            <br>
+            Situação do Pedido: {{pedidos.status}}
+            <br>
+            Nome do Cliente: {{cliente.name}}
+            <br>
+            E-mail do Cliente: {{cliente.email}}
+            <br>
+            Telefone do Cliente: {{'({}) {}-{}'.format(cliente.contact[:2], cliente.contact[2:7], cliente.contact[7:])}}
+            <br>
+            <br>
+            <table class="table table-sm">
+                <thead>
+
+                    <th>Código</th>
+                    <th>Imagem</th>
+                    <th>Nome</th>
+                    <th>Tam.</th>
+                    <th>Preço</th>
+                    <th>Qtde.</th>
+                    <th>Desconto</th>
+                    <th>Frete</th>
+                    <th>Vl.Pagar</th>
+                </thead>
+
+                <tbody>
+                    {% for key , produto in pedidos.order.items() %}
+                    {% set discount = "%0.2f" | format((produto.discount/100) * produto.price|float) %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td><img src="{{url_for('static', filename='images/'+ produto.image)}}" alt="{{produto.name}}" width="50" height="50"></td>
+                        <td>{{produto.name}}</td>
+
+                        <form action="{{url_for('updateCarro', code=key)}}" method="post">
+
+                           <td>
+                                {{produto.size}}
+                           </td>
+                            <td>R$ {{produto.price}}</td>
+                            <td>{{produto.quantity}}</td>
+                            {% if produto.discount > 0 %}
+                            <td>{{produto.discount}} % &nbsp; = {{produto.subtotal}}</td>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
+                            <td>{{produto.freight}}</td>
+                            <td>{{produto.total}}</td>
+                        </form>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <table class="table table-sm">
+                <tr>
+                   <td></td>
+                   <td>
+                       {% if pedidos.status=='Pago' %}
+                       {% else %}
+                       <form action="{{url_for('pagamento')}}" method="POST">
+                           {% set amount = (gTotal | string()).replace('.','') %}
+
+                           <input type="hidden" name="amount" value="{{amount}}">
+                           <input type="hidden" name="invoice" value="{{pedidos.invoice}}">
+                           <script
+                                src="https://checkout.stripe.com/checkout.js"
+                                class="stripe-button"
+                                data-key="pk_test_51MuGtwGhyM6JqwPtVWXLJqVrAcyJfZXHUHMBX46BU895l6ypXlJ0aKk8LDuPw3TzYIYmO6901OPQc2XDcIhiYcbq00VbWXO4tP"
+                                data-name="Loja_Flask"
+                                data-description="Pagamento Seguro"
+                                data-amount="{{amount}}"
+                                data-currency="brl">
+                           </script>
+                        </form>
+                        {% endif %}
+                   </td>
+                   <td colspan="3">Frete:&nbsp; R$ {{frete}}</td>
+                   <td colspan="5">Valor Pagar:&nbsp; R$ {{gTotal}}</td>
+                   <td colspan="8">Previsão de entrega:&nbsp; {{dtentrega}}</td>
+                   <td>
+                       <form action="{{url_for('get_pdf', notafiscal=pedidos.invoice)}}" method="post">
+                            <button type="submit" class="btn btn-sm btn-warning float-end">Gerar PDF</button>
+                       </form>
+                       <a class="btn btn-sm btn-danger" style="margin-left: -30px;" href="{{url_for('home')}}">Cancelar</a>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock conteudo %}
+

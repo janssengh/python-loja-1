@@ -1,0 +1,87 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+        <a class="inline-block" href="/">
+            <img src="{{url_for('static', filename='images/'+ store.logo)}}" alt="Lolita Store" width="auto" height="auto">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Todos Produtos</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Marcas
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for marca in marcas %}
+                            <li>
+                                <a class="dropdown-item" href="{{url_for('get_marca', id=marca.id)}}">{{marca.name}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for categoria in categorias %}
+                            <li>
+                                <a class="dropdown-item" href="{{url_for('get_categoria', id=categoria.id)}}">{{categoria.name}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.administrator == "N" %}
+                            <li class="nav-item">
+                               <a class="nav-link" href="{{url_for('cliente_logout')}}">{{current_user.username}}</a>
+                            </li>
+                        {% else %}
+                             <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{current_user.username}}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{url_for('admin')}}">Página Administrativa</a></li>
+                                </ul>
+                             </li>
+                        {% endif %}
+                        <li class="nav-item">
+                           <a class="nav-link" href="{{url_for('cliente_logout')}}">Sair</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('cadastrar_clientes')}}">Cadastrar</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('clienteLogin')}}">Login</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('meuspedidos')}}" tabindex="-1">Meus Pedidos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link bi bi-cart" href="{{url_for('getCart')}}" tabindex="-1">({{session['LojainCarrinho']|length}})</a>
+                    </li>
+                </ul>
+                <form class="form-check-inline d-flex my-2 my-lg-0" method="POST">
+                    <input class="form-control m-sm-2" type="text" placeholder="Pesquisar Produtos" autofocus="autofocos" name="search-string">
+                    {{pesquisa}}
+                    <input class="btn btn-outline-success my-2 my-sm-2"  type="submit"  formaction="/search" value="Pesquisar">
+                </form>
+            </div>
+        </div>
+    </nav>
+    <hr>
+</div>
+

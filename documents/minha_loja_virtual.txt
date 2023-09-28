@@ -1,0 +1,286 @@
+MINHA PRIMEIRA LOJA EM PYTHON
+(salvo no github na pasta janssengh/python-loja-1)
+
+C:\Users\Roeland\AppData\Local\Programs\Python\Python311\Scripts
+
+minha_loja - https://www.youtube.com/watch?v=7j8D4MJNA64&list=PL2Dw5PtrD32zLtw5icTfAUe_J8XSL0l9d&index=2
+
+Icones bootstrap: https://fontawesomeicons.com/bootstrap/icons?search=database
+
+1. Criar projeto pelo PyCharm, com environment nome de venv (já cria com a pasta do ambiente virtual e python)
+2. Criar os diretórios pelo PyCharm
+3. Instalar no terminal do PyCharm:
+	.\pip install flask 
+	.\pip install flask_sqlalchemy (permite fazer comandos sql automaticamente - https://flask-sqlalchemy.palletsprojects.com)
+	.\pip install flask-bcrypt (permite criptografar senhas)
+	.\pip install flask-wtf (permite criação de formulários)[
+	.\pip install flask-bcrypt
+	.\pip install flask-uploads
+	.\pip install -U werkzeug==0.16.0
+	.\pip install flask-login
+	.\pip install flask-Migrate
+	.\pip install pdfkit
+	.\pip install stripe
+	Documento "requirements.txt" que gravam as transações realizadas:
+		.\pip freeze > requirements.txt
+		.\pip install pip-chill
+		.\pip-chill > requirements.txt
+		.\pip install -r requirements.txt
+		
+	
+	Caso ocorra erro de segurança, mudar a política de seg.do powrshell
+	a. Executar powershell como administrador
+	b. PS C:\Windows\sytem32> Get-ExecutionPolicy Restricted
+	
+	c. PS C:\Windows\sytem32> Set-ExecutionPolicy RemoteSigned
+	d. PS C:\Windows\sytem32> Get-ExecutionPolicy RemoteSigned
+
+4. Acessar arquivo SQLALchemy - https://flask-sqlalchemy.palletsprojects.com
+	copiar os comandos e colar no arquivo "__init__.py"
+5. Escrever os primeiros comandos no arquivo "rotas.py"
+6. Escrever os comandos no arquivo "run.py"
+7. Testar, executando o "run.py"
+8. Para escrever os comandos dos arquivos: "_ajudaformulario.html", "registrar.html", "rotas.py"
+9. Para escrever comandos de formulário, acessar o site: https://flask-sqlalchemy.palletsprojects.com
+9. instalar no terminal do PyCharm: .\pip install flask-bcrypt (permite criptogtafar)
+10. acessar: https://flask-sqlalchemy.palletsprojects.com
+
+Aula4 - Formulário e banco de dados - site de referencia: https://flask-sqlalchemy.palletsprojects.com
+Parte I: Formulário
+1.instalar - flask-wtf - https://flask.palletsprojects.com/en/2.2.x/patterns/wtforms/
+2.usar a documentação: https://flask-sqlalchemy.palletsprojects.com
+3.Construção do formulário em python: "formulario.py" (uso dos comandos que estão no site de referencia)
+4.Construção da rota /registrar no arquivo "rotas.py":
+	from flask import flash - para envio de mensagens
+	from .formulario import RegistrationForm
+5.Construção do arquivo "_ajuda_formulario.html" para tratamento de erros
+Parte II: Banco de Dados
+6.Finalizar os comandos do arquivo "registrar.html", usando os fields(campos) do formulário
+7.Encriptar a senha, instalar flask-bcrypt, e importar no arquivo "__init__.py", concluir os comandos, incluir a chave secreta.
+8.Incluir os comandos no arquivo "rotas.py"
+	importar from loja Bcrypt
+9.Construir o arquivo "models.py"
+
+Aula5
+1.Construção página inicial "index.html"
+2.Incluir nas rotas
+3.Copia o trecho do html Flashing With Categories no index.html - https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/
+	incluir os extends do layouts.html
+4.Incluido commit no rotas, na função registrar
+5.Criado classe login no formulario
+
+Aula6:
+1.Criado tabela categoria e marca
+
+Aula7:
+1.Incluir marca e categoria no cadastro de produto
+2.Incluir o produto na base de dados, com os relacionamentos (modelos.py) - https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/
+3.Instalar flask-uploads, e importar no arquivo raiz "__init__.py"
+4.Importar do flask-uploads IMAGES, UploadSet, configure_uploads, patch_request_class no arquivo raiz "__init__.py"
+5.Criar basedir, no arquivo raiz "__init__.py" para definir o destino das imagens, ver documentação - https://pythonhosted.org/Flask-Uploads/
+	app.config['UPLOADED_FILES_DEST'] - UPLOADED_PHOTOS_DEST (Copiado da documentação)
+	photos = UploadSet('photos', IMAGES)
+	patch_request_class(app)
+	configure_uploads(app, (photos, media))
+	Obs.alterações efetuadas no aplicativo, conforme necessidade
+6. No arquivo "rotas.py", incluir no import da loja photos
+7. Incluir condição método post no addproduto das fotos
+8. Ao dar erro na execução, conforme werkzeug...
+	ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following 	dependency conflicts.
+	flask 2.2.3 requires Werkzeug>=2.2.2, but you have werkzeug 0.16.0 which is incompatible.
+		Algumas opçoes executadas testadas:
+		instalar a dependencia .\pip install -U werkzeug==0.16.0
+		instalar a dependencia ou wekzeug mais atual
+		instalar flask-reloads
+		 ou alterar no arquivo de log erro, conforme orientado no site de dúvidas, from werzeud....
+
+Aula9 
+1. rotas.py - incluso nas imagens do addproduto o (secret token) para gerar nome específico hexadecimal
+	import secret
+2. colocado as imagens para dentro de variáveis
+
+Aula10 (...significa a alteração efetuada) - LISTA DE PRODUTOS ADMIN
+1. from loja.produtos.models import Addproduto dentro rotas.admin
+2. @app.route('/admin') 
+	def admin():
+    		if 'email' not in session:
+      	 	 flash(f'Favor fazer o seu login no sistema primeiro!', 'danger')
+       		 return redirect(url_for('login'))
+   		produtos = Addproduto.query.all() ...incluído
+ 		return render_template('admin/index.html', titulo='Minha Loja', produtos=produtos) ...produto=produtos
+3. index.html.templates.admin - Copiar navbar do bootstrap e colar
+
+Aula11 - Marca & Categoria
+1.Função marcas = admin\rotas
+2.Função categorias = admin\rotas
+3.Marca e categoria = marca.html
+
+Aula12 - Atualização do produto
+
+Aula13 - Exclusão de marcas, usando modal
+
+alterado:
+	rotas\produto - import os, current_app
+	marca.html - bootstrap model
+	updateproduto.html - para excluir da pasta as imagens do produto
+	addproduto.html
+
+Aula14: 
+- Finalizacao do updateproduto
+- index.html - página home
+
+Aula15: Filtro da marca nos produtos
+- Não consegui fazer funcionar o filtro da marca, na opção do navbar pelo dropdown "marca | fabricantes
+	FUNCIONOU DEPOIS DE INCLUIR O JOIN!
+
+Aula16: Inclusão do filtro da categoria pelo dropdpwn do navbar
+- Inclusão do Join, que exibe as marcas que estão no produto, desta forma funcionou também o filtro dos produtos no dropdown, da aula 15
+
+Aula17: Paginação
+- Na rota raiz, define quantos produtos por página quer exibir
+- Paginação das tres rotas, produtos, categorias e marcas dos produtos
+
+Aula18: Paginação e Página Única
+- Fixar/Controlar qt.de Paginação, limitado em até 4 itens por página (colocado na raiz e no html)
+- Mostrar produtos dos mais novos, portanto em ordem decrescente (colocado na raiz)
+- Detalhes do Produto - Página Única
+
+Aula19: Página Ùnica e Carrinho
+- Alterado rotas do produto, inclusão rota página única
+- Criado página unica html
+- Criado carrinho py
+- Alterado init py raiz, importar carrinho
+
+Aula20: Sequencia do Carrinho e Adição no Carrinho
+Carrinho py 
+	Criar dicionário
+	Teste se cadastrado carrinho
+	Criar função def para adicionar ao carrinho vários produtos (se um produto já carregado no carrinho, não faz nada)
+Index html
+	Criar a sessão na loja carrinho (li class="nav-item") e tabindex=-1
+	Criado formulario (form), do adicionar carrinho
+	Copiado o form da Página única para dentro de marcas, categorias e produtos, alterado conforme cada objeto
+Página única html
+	Criado formulario (form), do adicionar carrinho
+
+Aula21: Conteúdo do carrinho
+Usado o dicionário, e as variáveis que são exibidas no html, são o que voce define no dicionário
+
+Aula22: Conteúdo do carrinho
+1)Inclusao da quantidade (obs.arrumar para colocar a quantidade do produto e não do estoque, conforme aula 21)
+2)Incusão do imposto e total a pagar, considerando o imposto
+3)Criação do lay-out padrão navbar, incluso no index.html e no carros.html
+
+Aula23: Conteúdo do carrinho
+1)Inclusão para selecionar cores,e alterar. Foi cadastrado no produto, várias cores para um produto, separado por vírgula
+2)Inclusão para mudar a quantidade por seta. Alterando automaticamente o subtotal.
+3)Alterei o dicionário, padronizando os nomes dos índices do dicionário para o ingles, consequentemente para o HTML
+4)Mudança para um botão de atualizar success 
+
+Aua24: Conteúdo carrinho
+Exclusão
+Verificação inclusão último produto nas funções delete, update, get do carrinho, para considerar o erro ao excluir o últmo produto do carrinho.
+Para entrar na marca e categoria do produto, que parou de funcionar foi incluso as funções de marcas e categorias dentro do arquivo rotas.py
+
+Aula25: Ignorado, devido ao problema instalação flask-msearch
+
+Aula26: Sistema de pesquisa
+- Alterado o navbar html, para fazer a chamada e a pesquisa
+- Alterado a rota, para chamar a tela de pesquisa html
+
+Aula 27: Formulário Cadastro Cliente
+
+Aula 28: Cadastrar Cliente na Base de Dados e Validações
+
+Aula 29: Login Cliente - Acesso /cliente/login
+instalações:
+pip install flask-login
+from flask_login import login_manager
+
+
+Aula 30: Tabela Pedido e Navbar (logout, login, cadasrar, mostrar nome do usuário)
+.\pip install flask-Migrate (usado no caso de incluir colunas, alteraçoes base de dados pelo terminal)
+
+Aula 31: Processar pedido e geração na tabela
+
+Aula 32: Tela de pedidos
+
+Aula 33: Criar processo para baixar arquivo PDF
+Chamar a tela de pedido diretamente ao processar compra
+
+Pesquisar no google: pdfkit python = https://pypi.org/project/pdfkit/
+	clicar em  wkhtmltopdf 
+	Download a precompiled binary or build from source
+	Windows	Installer (Vista or later)	64-bit	32-bit	 
+			7z Archive (XP/2003 or later)	64-bit	32-bit
+	Instalar	
+instalar pip install pdfkit
+no rotas import pdfkit
+no rotas from flask import make_response
+
+Aula 34: Geração do arquivo PDF
+pdf.html
+Chamada (link) no pedido html do get_pdf no botão baixar PDF
+Rotas py - alterar para ao invés de inline:filename fica attched;filename, para permitir o download do arquivo PDF
+**** Observação
+	Demora na geração, depois de incluir o config, pois antes disto não gerava e dava erro de OSerror
+
+Aula 35: Compra por cartão
+SITE: PAGSEGURO
+Conta : https://dashboard.stripe.com/register - senha 276718@str
+	stripedocs
+	stripe checkouts
+	https://stripe.com/docs/payments/checkout/migration
+		copiar client.html e atualizar no pedidos.html
+
+https://dashboard.stripe.com/test/apikeys
+	Copiar chave publica no rotas e chave secreta
+
+Instalar stripe
+
+https://stripe.com/docs/payments/checkout/migration?lang=python
+	Código do lado do servidor
+		Python
+		Copiar código
+		Atualizar dentro da rota pagamento
+
+Para testar o pagamento:
+	informar número do cartão 4242 4242 4242 4242   val/ano: qq   CVC: qq
+	Depois verifica se foi bem sucedida no stripe payments
+
+Para verificar se pagamento bem sucedido:
+	https://dashboard.stripe.com/test/payments
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+2. Instalações: Obs:Para inicializar pip no windows: arquivo get-pip.py (endereço C:\Roeland\Principal\Marketing digital\Softgraf\Python2023\projetos)
+	
+
+3. Para entrar no visual studio, execute no prompt de comando: code . 
+
+
+
+
+
+https://cursos.alura.com.br/forum/topico-form-validation-146434
+
+
+
+

@@ -1,0 +1,56 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{url_for('admin')}}">{{titulo}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('admin')}}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Loja
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{url_for('ceploja')}}">Incluir Loja</a></li>
+                <li><a class="dropdown-item" href="{{url_for('loja')}}">Consultar Loja</a></li>
+                <li><a class="dropdown-item" href="{{url_for('home')}}">Site</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('marcas')}}">Marcas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('categoria')}}">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('cores')}}">Cores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('tamanhos')}}">Tamanhos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('embalagens')}}">Embalagens</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Produtos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{url_for('addproduto')}}">Incluir Produtos</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addmarca')}}">Incluir Marcas</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addcat')}}">Incluir Categorias</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addcor')}}">Incluir Cores</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addtamanho')}}">Incluir Tamanhos</a></li>
+                <li><a class="dropdown-item" href="{{url_for('addpack')}}">Incluir Embalagens</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>

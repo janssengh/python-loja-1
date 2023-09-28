@@ -1,0 +1,47 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <form class="form-check-inline d-flex my-2 my-lg-0" method="POST">
+
+                <select name="marca" id="marca" class="form-select m-sm-2" required>
+                    <option value="brand_id">Marca</option>
+                    {% for marca in marcas  %}
+                    <option value="{{marca.id}}">{{marca.name}}</option>
+                    {% endfor  %}
+                </select>
+
+                <select name="categoria" id="categoria" class="form-select m-sm-2" required>
+                    <option value="category_id">Categoria</option>
+                    {% for categoria in categorias  %}
+                    <option value="{{categoria.id}}">{{categoria.name}}</option>
+                    {% endfor  %}
+                </select>
+
+                <select name="tamanho" id="tamanho" class="form-select m-sm-2" required>
+                    <option value="size_id">Tamanho</option>
+                    {% for tamanho in tamanhos  %}
+                    <option value="{{tamanho.id}}">{{tamanho.name}}</option>
+                    {% endfor  %}
+                </select>
+
+                <select name="cor" id="cor" class="form-select m-sm-2" required>
+                    <option value="color_id">Cor</option>
+                    {% for cor in cores  %}
+                    <option value="{{cor.id}}">{{cor.name}}</option>
+                    {% endfor  %}
+                </select>
+
+                </select>
+                    <select name="order-col" id="order-col" autofocus="autofocos" class="form-select my-2 m-sm-2" required>
+                    <option value="+recente">Ordenação</option>
+                    <option value="<valor">Menor valor</option>
+                    <option value=">valor">Maior valor</option>
+                    <option value="descricao">Descrição</option>
+                    <option value="+recente">Mais recente</option>
+                </select>
+                <input class="btn btn-outline-success my-2 my-sm-2" type="submit" formaction="/searchall" value="Pesquisar">
+            </form>
+        </div>
+    </nav>
+    <hr>
+</div>

@@ -1,0 +1,75 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+{% include "navbar-adm.html" %}
+
+<div class="container mt-3">
+  <table class="table table table-sm table-striped">
+    <thead>
+      <th>Serial</th>
+      <th>Descrição Formato</th>
+      <th>Peso</th>
+      <th>Comprimento</th>
+      <th>Altura</th>
+      <th>Largura</th>
+      <th>Editar</th>
+      <th>Deletar</th>
+    </thead>
+
+    <tbody>
+      {% for embalagem in embalagens %}
+      <tr>
+        <td>{{loop.index}}</td>
+
+        {% if embalagem.format == 1 %}
+          {% set discformat = "Caixa/Pacote" %}
+        {% elif embalagem.format == 2 %}
+          {% set discformat = "Rolo/Prisma" %}
+        {% else %}
+          {% set discformat = "Envelope" %}
+        {% endif %}
+
+        <td>{{discformat}}</td>
+        <td>{{embalagem.weight}} kg</td>
+        <td>{{embalagem.length}} cm</td>
+        <td>{{embalagem.height}} cm</td>
+        <td>{{embalagem.width}} cm</td>
+
+        <td><a href="{{url_for('updatepack', id=embalagem.id)}}" class="btn btn-sm btn-warning">Editar</a></td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+            data-bs-target="#exampleModal-{{embalagem.id}}">
+            Excluir
+          </button>
+        </td>
+      </tr>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal-{{embalagem.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="corModalLabel">{{discformat}}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <span class="text-danger">Deseja realmente excluir este formato {{discformat}}?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</button>
+              <form action="{{url_for('deletepack', id=embalagem.id)}}" method="POST">
+                <button type="submit" class="btn btn-danger">Excluir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% include '_messages.html' %}
+
+{% endblock conteudo %}

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="col text-center my-2 my-sm-2">
+        <!-- Inclue a paginação da página -->
+        {% if marca %}
+        {% include 'pgordbrand.html' %}
+        {% elif get_cat_prod %}
+        {% include 'pgordcateg.html' %}
+        {% elif search %}
+        {% include 'pgordsearch.html' %}
+
+        {% elif search_brand or search_category or search_size or search_color or order_value %}
+        {% include 'pgordschall.html' %}
+        {% else %}
+        {% include 'pgordprodu.html' %}
+        {% endif %}
+        <br>
+    </div>
+</div>
+

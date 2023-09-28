@@ -1,0 +1,22 @@
+        {% if produtos.has_prev %}
+            <a href="{{url_for('searchpage', searchqueries=search, pagina=produtos.prev_num)}}" class="btn btn-outline-success btn-sm mt-3">Anterior</a>
+        {% endif %}
+
+        {% if produtos.total > pages %}
+            {% for page_num in produtos.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %}
+                {% if page_num %}
+
+                    {% if produtos.pagina == page_num %}
+                        <a href="{{url_for('searchpage', searchqueries=search, pagina=page_num)}}" class="btn btn-success btn-sm mt-3">{{page_num}}</a>
+                    {% else %}
+                        <a href="{{url_for('searchpage', searchqueries=search, pagina=page_num)}}" class="btn btn-outline-success btn-sm mt-3">{{page_num}}</a>
+                    {% endif %}
+                {% else %}
+                    ...
+                {% endif %}
+
+            {% endfor %}
+        {% endif %}
+        {% if produtos.has_next %}
+            <a href="{{url_for('searchpage', searchqueries=search, pagina=produtos.next_num)}}" class="btn btn-outline-success btn-sm mt-3">Próxima</a>
+        {% endif %}

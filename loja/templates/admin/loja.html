@@ -1,0 +1,65 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+{% include "navbar-adm.html" %}
+
+<div class="container mt-3">
+  <table class="table table table-sm table-striped">
+    <thead>
+      <th>Nome</th>
+      <th>CEP</th>
+      <th>Endereço</th>
+      <th>Cidade/Uf</th>
+      <th>Tx.Base frete</th>
+      <th>Qt.prod.</th>
+      <th>Editar</th>
+      <th>Deletar</th>
+    </thead>
+
+    <tbody>
+      {% for lojaform in loja %}
+      <tr>
+        <td>{{lojaform.name}}</td>
+        <td>{{lojaform.zipcode}}</td>
+        <td>{{lojaform.address}}</td>
+        <td>{{lojaform.city}} / {{lojaform.region}}</td>
+        <td>{{lojaform.freight_rate}} %</td>
+        <td>{{lojaform.pages}} (por página)</td>
+        <td><a href="{{url_for('updateloja', id=lojaform.id)}}" class="btn btn-sm btn-warning">Editar</a></td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+            data-bs-target="#exampleModal-{{lojaform.id}}">
+            Excluir
+          </button>
+        </td>
+      </tr>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal-{{lojaform.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="marcaModalLabel">{{lojaform.name}}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <span class="text-danger">Deseja realmente excluir a loja {{lojaform.name}} ?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</button>
+              <form action="{{url_for('deleteloja', id=lojaform.id)}}" method="POST">
+                <button type="submit" class="btn btn-danger">Excluir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% include '_messages.html' %}
+
+{% endblock conteudo %}

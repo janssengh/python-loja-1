@@ -1,0 +1,23 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 p-2">
+            <div class="text-center bg-success p-2 h-4">Login</div>
+            {% from "_ajudaformulario.html" import render_field %}
+            {% include '_messages.html' %}
+            <form method="post">
+               {{form.csrf_token}}
+                <div>
+                    {{ render_field(form.email, class="form-control") }}
+                    {{ render_field(form.password, class="form-control") }}
+                </div>
+                <p><input type="submit" value="Login" class="btn btn-success"></p>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock conteudo %}

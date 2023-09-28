@@ -1,0 +1,46 @@
+{% extends "layouts.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {% include "_messages.html" %}
+        <h2 class="text-center mt-5"> Alterar Embalagens </h2>
+        <form action="" method="POST">
+            <div class="form-control">
+                <label for="format">Adicionar um Formato</label>
+                <select name="format" id="format" class="form-select" required>
+                    <option value="format">{{discformat}}</option>
+                    <option value="1">Caixa/Pacote</option>
+                    <option value="2">Rolo/Prisma</option>
+                    <option value="3">Envelope</option>
+                </select>
+                <label for="">Peso</label>
+                <input type="text" name="weight" class="form-control" value="{{updatepack.weight}}">
+                <label for="">Comprimento</label>
+                <input type="text" name="length" class="form-control" value="{{updatepack.length}}">
+                <label for="">Altura</label>
+                <input type="text" name="height" class="form-control" value="{{updatepack.height}}">
+                <label for="">Largura</label>
+                <input type="text" name="width" class="form-control" value="{{updatepack.width}}">
+            </div>
+
+            <input type="submit" value="Atualizar Embalagem" class="btn btn-success mt-2">
+        </form>
+        <a class="btn btn-danger" style="margin-top: -68px; margin-left: 180px;" href="{{url_for('embalagens')}}">Cancelar</a>
+  </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+{% endblock conteudo %}
+
+
+
+
+
+
+
+
